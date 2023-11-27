@@ -1,0 +1,45 @@
+#search "application to yaml"
+server:
+  port: 8088
+
+---
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+---
+spring:
+  profiles:
+    active: test
+
+---
+spring:
+  profiles: dev
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3310/mydb
+    driverClassName: com.mysql.cj.jdbc.Driver
+    password: Abc123456789
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Welcome to my DevApp
+
+---
+spring:
+  profiles: test
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3311/mytestdb
+    driverClassName: com.mysql.cj.jdbc.Driver
+    password: Abc123456789
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+welcome:
+  message: Welcome to my TestApp
